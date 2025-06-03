@@ -95,7 +95,7 @@ def main_menu(df):
 
 # CORRIDOR PAGE
 def corridor_page(df):
-    st.title("🛣️ Cari Kode Rute")
+    st.title("🛣️ Cari Koridor")
 
     route_list = df['routeName'].dropna().unique().tolist()
     selected_route = st.selectbox("Pilih atau ketik nama rute:", sorted(route_list), placeholder="Contoh: Rute 1")
@@ -103,9 +103,9 @@ def corridor_page(df):
     if selected_route and st.button("Cari"):
         matched = df[df['routeName'] == selected_route]
         if not matched.empty:
-            st.success(f"Corridor Name: {matched.iloc[0]['corridorID']}")
+            st.success(f"✅ Kode Rute: {matched.iloc[0]['corridorID']}")
         else:
-            st.error("Kode rute tidak ditemukan.")
+            st.error("❌ Kode rute tidak ditemukan.")
 
     if st.button("Kembali"):
         go_to('main_menu')
