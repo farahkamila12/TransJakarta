@@ -127,15 +127,17 @@ def history_page(df):
     st.write(f"**Jenis Kelamin**: {user['userSex']}")
     st.write(f"**Tahun Lahir**: {user['userBirthYear']}")
 
-    # tampilkan hanya kolom-kolom yang tersedia
-    history = df[df['payUserID'] == user_id][['transID', 'routeID', 'transDate', 'duration', 'direction']]
+    history = df[df['payUserID'] == user_id][[
+        'transID', 'routeID', 'transDate', 'tapInTime', 'tapOutTime', 'duration', 'direction'
+    ]]
     if history.empty:
-        st.warning("Tidak ada riwayat perjalanan.")
+        st.warning("⚠️ Tidak ada riwayat perjalanan.")
     else:
         st.dataframe(history.reset_index(drop=True))
 
     if st.button("Kembali"):
         go_to('main_menu')
+
 
 # ==========================
 # ROUTING
