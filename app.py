@@ -85,7 +85,7 @@ def main_menu(df):
     user = st.session_state.users[st.session_state.users['payUserID'] == user_id].iloc[0]
     st.title(f"👋 Selamat datang, {user['userName']}!")
 
-    if st.button("Cari Kode Rute"):
+    if st.button("Cari Kode Koridor"):
         go_to('corridor')
     if st.button("Cek Riwayat"):
         go_to('history')
@@ -95,7 +95,7 @@ def main_menu(df):
 
 # CORRIDOR PAGE
 def corridor_page(df):
-    st.title("🛣️ Cari Koridor")
+    st.title("🛣️ Cari Kode Koridor")
 
     route_list = df['routeName'].dropna().unique().tolist()
     selected_route = st.selectbox("Pilih atau ketik nama rute:", sorted(route_list), placeholder="Contoh: Rute 1")
