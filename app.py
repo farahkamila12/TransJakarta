@@ -60,7 +60,9 @@ def register_page():
     userBirthYear = st.number_input("Tahun Lahir", min_value=1900, max_value=2025, value=2000)
 
     if st.button("Daftar"):
-        if not payUserID.isdigit() or len(payUserID) != 12:
+        if not payUserID.strip() or not userName.strip():
+            st.error("Semua kolom harus diisi!")
+        elif not payUserID.isdigit() or len(payUserID) != 12:
             st.error("PayUserID harus terdiri dari 12 digit angka.")
         elif payUserID in st.session_state.users['payUserID'].values:
             st.error("PayUserID sudah terdaftar.")
