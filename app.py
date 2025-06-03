@@ -85,7 +85,7 @@ def main_menu(df):
     user = st.session_state.users[st.session_state.users['payUserID'] == user_id].iloc[0]
     st.title(f"👋 Selamat datang, {user['userName']}!")
 
-    if st.button("Cari Koridor"):
+    if st.button("Cari Kode Rute"):
         go_to('corridor')
     if st.button("Cek Riwayat"):
         go_to('history')
