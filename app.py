@@ -103,9 +103,9 @@ def corridor_page(df):
     if selected_route and st.button("Cari"):
         matched = df[df['routeName'] == selected_route]
         if not matched.empty:
-            st.success(f"✅ Kode Rute: {matched.iloc[0]['corridorID']}")
+            st.success(f"✅ Kode Koridor: {matched.iloc[0]['corridorID']}")
         else:
-            st.error("❌ Kode rute tidak ditemukan.")
+            st.error("❌ Kode koridor tidak ditemukan.")
 
     if st.button("Kembali"):
         go_to('main_menu')
