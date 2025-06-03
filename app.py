@@ -33,7 +33,7 @@ def go_to(page):
 
 # LOGIN PAGE
 def login_page():
-    st.title("🙌🏻Selamat Datang Pengguna Transjakarta!")
+    st.title("🙌🏻Selamat Datang Pengguna TransJakarta!")
 
     pay_id = st.text_input("Masukkan PayUserID:")
     login = st.button("Login")
