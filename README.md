@@ -1,2 +1,2 @@
 # TransJakarta
-Project Kelompok 6 Database_Statistika UI
+Final Project Database Kelompok 6_Statistika UI
