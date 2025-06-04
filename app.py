@@ -31,9 +31,11 @@ if 'df' not in st.session_state:
 def go_to(page):
     st.session_state.page = page
 
+# ==========================
 # LOGIN PAGE
+# ==========================
 def login_page():
-    st.title("🙌🏻Selamat Datang Pengguna TransJakarta!")
+    st.title("🙌🏻 Selamat Datang Pengguna TransJakarta!")
 
     pay_id = st.text_input("Masukkan PayUserID:")
     login = st.button("Login")
@@ -49,7 +51,9 @@ def login_page():
     if register:
         go_to('register')
 
+# ==========================
 # REGISTER PAGE
+# ==========================
 def register_page():
     st.title("📝 Register Pengguna Baru")
 
@@ -75,13 +79,19 @@ def register_page():
                 "userBirthYear": userBirthYear
             }])
             st.session_state.users = pd.concat([st.session_state.users, new_user], ignore_index=True)
+
+            # Opsional: Simpan ke file agar tidak hilang saat refresh
+            st.session_state.users.to_excel("users_updated.xlsx", index=False)
+
             st.success("Registrasi berhasil!")
             go_to('login')
 
     if st.button("Kembali"):
         go_to('login')
 
+# ==========================
 # MAIN MENU
+# ==========================
 def main_menu(df):
     user_id = st.session_state.user_id
     user = st.session_state.users[st.session_state.users['payUserID'] == user_id].iloc[0]
@@ -95,7 +105,9 @@ def main_menu(df):
         st.session_state.user_id = None
         go_to('login')
 
+# ==========================
 # CORRIDOR PAGE
+# ==========================
 def corridor_page(df):
     st.title("🛣️ Cari Kode Koridor")
 
@@ -112,7 +124,9 @@ def corridor_page(df):
     if st.button("Kembali"):
         go_to('main_menu')
 
+# ==========================
 # HISTORY PAGE
+# ==========================
 def history_page(df):
     st.title("📜 Riwayat Perjalanan")
 
@@ -139,7 +153,6 @@ def history_page(df):
 
     if st.button("Kembali"):
         go_to('main_menu')
-
 
 # ==========================
 # ROUTING
